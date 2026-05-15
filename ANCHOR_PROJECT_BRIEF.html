@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anchor — Project Brief</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #1a1a1a;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 40px;
+    }
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+    h2 { font-size: 18px; font-weight: 700; margin-top: 36px; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid #e5e7eb; color: #111; }
+    h3 { font-size: 14px; font-weight: 700; margin-top: 20px; margin-bottom: 6px; color: #374151; }
+    p { margin-bottom: 10px; color: #374151; }
+    ul, ol { margin-left: 20px; margin-bottom: 10px; color: #374151; }
+    li { margin-bottom: 4px; }
+    code {
+      font-family: "SF Mono", "Fira Code", monospace;
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #1d4ed8;
+    }
+    pre {
+      background: #f8f9fa;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 16px;
+      font-family: "SF Mono", "Fira Code", monospace;
+      font-size: 12px;
+      line-height: 1.6;
+      overflow-x: auto;
+      margin-bottom: 12px;
+      color: #1f2937;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 16px;
+      font-size: 13px;
+    }
+    th {
+      background: #f3f4f6;
+      text-align: left;
+      padding: 8px 12px;
+      font-weight: 600;
+      border: 1px solid #e5e7eb;
+    }
+    td {
+      padding: 8px 12px;
+      border: 1px solid #e5e7eb;
+      vertical-align: top;
+    }
+    .tag {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1d4ed8;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 99px;
+      margin-right: 4px;
+    }
+    .header-block {
+      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+      color: white;
+      padding: 32px 36px;
+      border-radius: 12px;
+      margin-bottom: 36px;
+    }
+    .header-block h1 { color: white; margin-bottom: 8px; }
+    .header-block p { color: rgba(255,255,255,0.85); margin: 0; font-size: 15px; }
+    .callout {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 16px;
+    }
+    .callout p { margin: 0; color: #1e40af; font-size: 13px; }
+    .status-done { color: #16a34a; font-weight: 600; }
+    .status-todo { color: #d97706; font-weight: 600; }
+    @media print {
+      body { padding: 32px; }
+      h2 { page-break-after: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-block">
+    <h1>Anchor — Project Brief</h1>
+    <p>A consumer web app helping cancer patients navigate administrative chaos after diagnosis.</p>
+  </div>
+
+  <h2>1. The Problem</h2>
+  <p>A cancer diagnosis doesn't just bring medical challenges — it triggers an overwhelming wave of administrative tasks that patients are completely unprepared for:</p>
+  <ul>
+    <li>Understanding and preserving health insurance (COBRA deadlines, appeals)</li>
+    <li>Navigating employment rights (FMLA, short-term disability, EAP)</li>
+    <li>Finding financial assistance (government programs, pharma patient assistance, nonprofit grants)</li>
+    <li>Managing critical deadlines that can't be missed</li>
+    <li>Generating legal and medical documents (appeal letters, leave requests)</li>
+  </ul>
+  <p>Most patients figure this out alone, often missing benefits they're entitled to and deadlines that cost them thousands of dollars.</p>
+
+  <h2>2. The Product — What Anchor Does</h2>
+  <p>Anchor is a personalized administrative hub for cancer patients. After a short onboarding, users get:</p>
+
+  <table>
+    <tr>
+      <th>Feature</th>
+      <th>What it does</th>
+    </tr>
+    <tr>
+      <td><strong>Action Checklist</strong></td>
+      <td>Prioritized list of things to do (urgent → low), categorized by insurance, employment, financial, legal, and medical</td>
+    </tr>
+    <tr>
+      <td><strong>Benefits Finder</strong></td>
+      <td>AI-generated list of government programs, employer benefits, pharmaceutical assistance, and nonprofit grants the user likely qualifies for</td>
+    </tr>
+    <tr>
+      <td><strong>Document Generator</strong></td>
+      <td>AI-generated documents pre-filled with the user's information: FMLA request, insurance appeal letter, COBRA notice, disability request, hardship letter, medical records request</td>
+    </tr>
+    <tr>
+      <td><strong>Deadline Tracker</strong></td>
+      <td>Timeline of critical dates with urgency badges — COBRA windows, appeal deadlines, enrollment periods</td>
+    </tr>
+  </table>
+
+  <h2>3. Business Model</h2>
+  <ul>
+    <li><strong>Price:</strong> $5/month flat subscription</li>
+    <li><strong>Payment processor:</strong> Stripe (subscription billing)</li>
+    <li>Users can complete onboarding for free, but need an active subscription to access the dashboard features</li>
+    <li>Subscription status is stored in Supabase and checked on every dashboard route via the proxy (middleware)</li>
+  </ul>
+
+  <h2>4. Tech Stack</h2>
+  <table>
+    <tr><th>Layer</th><th>Technology</th><th>Notes</th></tr>
+    <tr><td>Framework</td><td>Next.js 16 (App Router, TypeScript)</td><td>Deployed on Vercel</td></tr>
+    <tr><td>Styling</td><td>Tailwind CSS + shadcn/ui</td><td>Component library initialized</td></tr>
+    <tr><td>Auth + Database</td><td>Supabase</td><td>Email auth, PostgreSQL, Row Level Security</td></tr>
+    <tr><td>Payments</td><td>Stripe</td><td>Subscription billing via Checkout</td></tr>
+    <tr><td>AI</td><td>Anthropic Claude API (claude-sonnet-4-6)</td><td>Benefits finder + document generation</td></tr>
+    <tr><td>Deployment</td><td>Vercel</td><td>Not yet deployed</td></tr>
+  </table>
+
+  <h2>5. Project Location</h2>
+  <pre>/Users/maiasalti/anchor</pre>
+
+  <h2>6. Directory Structure</h2>
+  <pre>anchor/
+├── app/
+│   ├── (marketing)/page.tsx          # Landing page
+│   ├── (auth)/login/page.tsx         # Login
+│   ├── (auth)/signup/page.tsx        # Signup
+│   ├── onboarding/page.tsx           # 4-step intake form
+│   ├── dashboard/
+│   │   ├── layout.tsx                # Sidebar + nav
+│   │   ├── page.tsx                  # Hub overview
+│   │   ├── checklist/page.tsx
+│   │   ├── benefits/page.tsx
+│   │   ├── documents/page.tsx
+│   │   ├── deadlines/page.tsx
+│   │   └── upgrade/page.tsx          # Paywall page
+│   ├── api/
+│   │   ├── stripe/checkout/route.ts  # Create Stripe checkout session
+│   │   ├── stripe/webhook/route.ts   # Handle Stripe subscription events
+│   │   ├── ai/benefits/route.ts      # Claude: generate benefits list
+│   │   ├── ai/documents/route.ts     # Claude: generate documents
+│   │   └── auth/signout/route.ts     # Sign out
+│   └── layout.tsx / globals.css
+├── components/ui/                    # shadcn/ui primitives
+├── lib/
+│   ├── supabase/client.ts            # Browser Supabase client
+│   ├── supabase/server.ts            # Server Supabase client
+│   ├── stripe.ts                     # Stripe client (lazy init)
+│   └── claude.ts                     # Anthropic client (lazy init)
+├── supabase/migrations/
+│   └── 001_initial_schema.sql        # All tables + RLS policies
+├── proxy.ts                          # Route protection (Next.js 16)
+└── .env.local.example</pre>
+
+  <h2>7. Database Schema (Supabase / PostgreSQL)</h2>
+  <table>
+    <tr><th>Table</th><th>Key columns</th></tr>
+    <tr>
+      <td><code>profiles</code></td>
+      <td>id (ref auth.users), name, cancer_type, stage, diagnosis_date, employer_name, employer_size, insurance_type, insurance_provider, treatment_status, stripe_customer_id, subscription_status</td>
+    </tr>
+    <tr>
+      <td><code>action_items</code></td>
+      <td>id, user_id, title, description, category (insurance|employment|financial|legal|medical), priority (urgent|high|medium|low), status (pending|in_progress|completed|skipped), due_date</td>
+    </tr>
+    <tr>
+      <td><code>benefits</code></td>
+      <td>id, user_id, name, type (government|employer|nonprofit|pharmaceutical), description, eligibility_met, application_url, status (not_started|applied|approved|denied)</td>
+    </tr>
+    <tr>
+      <td><code>documents</code></td>
+      <td>id, user_id, document_type, title, content (full text of generated document)</td>
+    </tr>
+    <tr>
+      <td><code>deadlines</code></td>
+      <td>id, user_id, title, date, description, action_item_id, is_completed</td>
+    </tr>
+  </table>
+  <p>All tables have Row Level Security enabled — users can only access their own rows. A trigger auto-creates a profile row when a user signs up.</p>
+
+  <h2>8. Onboarding Flow</h2>
+  <p>4-step form that collects:</p>
+  <ol>
+    <li><strong>Diagnosis:</strong> cancer type, stage, diagnosis date, treatment status</li>
+    <li><strong>Employer:</strong> employer name, employer size (determines FMLA eligibility)</li>
+    <li><strong>Insurance:</strong> insurance type, insurance provider</li>
+    <li><strong>Review:</strong> confirm everything, then save to Supabase profiles table</li>
+  </ol>
+  <p>After onboarding, users are redirected to <code>/dashboard/upgrade</code> to subscribe.</p>
+
+  <h2>9. Subscription & Auth Flow</h2>
+  <ol>
+    <li>User signs up → Supabase creates auth user + profile row</li>
+    <li>User completes onboarding → profile fields saved</li>
+    <li>User subscribes via Stripe Checkout → Stripe sends webhook to <code>/api/stripe/webhook</code></li>
+    <li>Webhook updates <code>profiles.subscription_status</code> to <code>active</code></li>
+    <li><code>proxy.ts</code> checks subscription on every <code>/dashboard/*</code> request — redirects to <code>/dashboard/upgrade</code> if not active</li>
+  </ol>
+
+  <div class="callout">
+    <p><strong>Important:</strong> The Stripe webhook secret (<code>STRIPE_WEBHOOK_SECRET</code>) can only be set up after the app is deployed to Vercel, because Stripe needs a live public URL. Until then, subscription status must be manually set to <code>active</code> in the Supabase Table Editor for testing.</p>
+  </div>
+
+  <h2>10. Environment Variables</h2>
+  <pre>NEXT_PUBLIC_SUPABASE_URL=          # From Supabase: Settings → API → Project URL
+NEXT_PUBLIC_SUPABASE_ANON_KEY=     # From Supabase: Settings → API → anon/public key
+SUPABASE_SERVICE_ROLE_KEY=         # From Supabase: Settings → API → service_role key
+STRIPE_SECRET_KEY=                 # From Stripe: Developers → API keys → Secret key
+STRIPE_WEBHOOK_SECRET=             # From Stripe: after Vercel deploy (leave blank locally)
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY= # From Stripe: Developers → API keys → Publishable key
+STRIPE_PRICE_ID=                   # From Stripe: Product catalogue → Anchor → price_xxx
+ANTHROPIC_API_KEY=                 # From console.anthropic.com
+NEXT_PUBLIC_APP_URL=               # http://localhost:3000 locally, Vercel URL in production</pre>
+
+  <h2>11. What's Built vs. What's Left</h2>
+  <table>
+    <tr><th>Area</th><th>Status</th><th>Notes</th></tr>
+    <tr><td>Landing page</td><td class="status-done">Done</td><td>Hero, features, pricing ($5/mo), CTA</td></tr>
+    <tr><td>Auth (login/signup)</td><td class="status-done">Done</td><td>Supabase email auth</td></tr>
+    <tr><td>Onboarding (4-step form)</td><td class="status-done">Done</td><td>Saves to profiles table</td></tr>
+    <tr><td>Dashboard layout</td><td class="status-done">Done</td><td>Sidebar nav, user info, sign out</td></tr>
+    <tr><td>Dashboard hub</td><td class="status-done">Done</td><td>Stats cards, profile summary, quick links</td></tr>
+    <tr><td>Checklist page</td><td class="status-done">Done</td><td>Skeleton — reads from action_items table</td></tr>
+    <tr><td>Benefits page</td><td class="status-done">Done</td><td>Skeleton — reads from benefits table</td></tr>
+    <tr><td>Documents page</td><td class="status-done">Done</td><td>Skeleton — 6 templates with Generate buttons</td></tr>
+    <tr><td>Deadlines page</td><td class="status-done">Done</td><td>Skeleton — reads from deadlines table</td></tr>
+    <tr><td>Stripe checkout</td><td class="status-done">Done</td><td>Creates session, redirects to Stripe</td></tr>
+    <tr><td>Stripe webhook</td><td class="status-done">Done</td><td>Updates subscription_status on payment events</td></tr>
+    <tr><td>Claude: benefits API</td><td class="status-done">Done</td><td>Route exists, needs UI button wired up</td></tr>
+    <tr><td>Claude: documents API</td><td class="status-done">Done</td><td>Route exists, needs UI Generate buttons wired up</td></tr>
+    <tr><td>Route protection</td><td class="status-done">Done</td><td>proxy.ts guards /dashboard, checks subscription</td></tr>
+    <tr><td>AI buttons wired to API</td><td class="status-todo">To do</td><td>Benefits "Find" button + Documents "Generate" buttons need onClick handlers calling the AI routes</td></tr>
+    <tr><td>Add item / deadline forms</td><td class="status-todo">To do</td><td>Modal or inline forms to add checklist items and deadlines manually</td></tr>
+    <tr><td>Email notifications</td><td class="status-todo">To do</td><td>Deadline reminders (could use Resend or Supabase Edge Functions)</td></tr>
+    <tr><td>Stripe webhook secret</td><td class="status-todo">To do</td><td>Set up after Vercel deployment</td></tr>
+    <tr><td>Vercel deployment</td><td class="status-todo">To do</td><td>Push to GitHub → import to Vercel → add env vars</td></tr>
+  </table>
+
+  <h2>12. Immediate Next Steps</h2>
+  <ol>
+    <li>Wire up the "Find my benefits" button on <code>/dashboard/benefits</code> to call <code>POST /api/ai/benefits</code></li>
+    <li>Wire up each "Generate" button on <code>/dashboard/documents</code> to call <code>POST /api/ai/documents</code> with the template type</li>
+    <li>Add a modal/form on the checklist and deadlines pages to add items manually</li>
+    <li>Deploy to Vercel: push to GitHub → import project in Vercel → add all env vars → set <code>NEXT_PUBLIC_APP_URL</code> to live URL</li>
+    <li>After deploy: set up Stripe webhook pointing to <code>https://your-vercel-url.app/api/stripe/webhook</code> and paste the signing secret into Vercel env vars</li>
+  </ol>
+
+  <h2>13. Known Issues / Notes</h2>
+  <ul>
+    <li>Supabase email confirmation should be disabled during development (Auth → Providers → Email → turn off "Confirm email") — otherwise onboarding saves fail silently because the user isn't fully authenticated yet</li>
+    <li>Subscription status must be manually set to <code>active</code> in Supabase Table Editor during local testing (since webhook needs a live URL)</li>
+    <li>The app uses Next.js 16 which renamed <code>middleware.ts</code> to <code>proxy.ts</code> — this is already handled correctly</li>
+    <li>Stripe and Anthropic clients use lazy initialization so they don't throw errors at build time when env vars aren't set</li>
+  </ul>
+
+  <h2>14. Running Locally</h2>
+  <pre>cd /Users/maiasalti/anchor
+npm run dev
+# Open http://localhost:3000</pre>
+
+  <p style="margin-top: 40px; color: #9ca3af; font-size: 12px; border-top: 1px solid #e5e7eb; padding-top: 16px;">
+    Generated February 2026 — Anchor project brief for AI assistant context
+  </p>
+
+</body>
+</html>
