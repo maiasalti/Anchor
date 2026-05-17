@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/marketing/reveal";
 
@@ -37,35 +38,43 @@ export default function LandingPage() {
       {/* HERO — animates on mount */}
       <Reveal
         onMount
-        className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-24"
+        className="relative min-h-screen flex flex-col items-center justify-start px-6 pt-20 md:pt-24 overflow-hidden"
         yOffset={30}
         duration={1.3}
         stagger={0.18}
       >
+        <Image
+          src="/hero-bg.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-bottom translate-y-[18%] select-none pointer-events-none"
+        />
         <div className="max-w-5xl mx-auto text-center relative z-10">
           <p
             data-reveal
-            className="text-sm uppercase tracking-[0.32em] text-muted-foreground mb-12"
+            className="text-sm uppercase tracking-[0.32em] text-muted-foreground mb-4"
           >
             For cancer patients and the people who love them
           </p>
           <h1 className="tracking-tight leading-[0.95] font-light">
             <span
               data-reveal
-              className="block text-6xl md:text-8xl text-foreground"
+              className="block text-5xl md:text-7xl text-foreground"
             >
               Focus on healing.
             </span>
             <span
               data-reveal
-              className="block text-6xl md:text-8xl text-primary mt-3"
+              className="block text-5xl md:text-7xl text-primary mt-3"
             >
               WayFlame handles the rest.
             </span>
           </h1>
           <p
             data-reveal
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mt-12"
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mt-6"
           >
             A private hub for tracking symptoms, journaling, drafting messages,
             and managing the practical side of a cancer diagnosis.
@@ -78,7 +87,7 @@ export default function LandingPage() {
       </Reveal>
 
       {/* POSITIONING */}
-      <Reveal className="min-h-screen flex flex-col items-center justify-center px-6 relative">
+      <Reveal className="flex flex-col items-center px-6 pt-12 md:pt-16 pb-0 relative">
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <p
             data-reveal
@@ -92,6 +101,18 @@ export default function LandingPage() {
           >
             WayFlame brings it into one place.
           </p>
+        </div>
+        <div
+          data-reveal
+          className="relative w-full max-w-5xl aspect-[16/9] mt-12 md:mt-16 pointer-events-none select-none"
+        >
+          <Image
+            src="/positioning-illustration.png"
+            alt=""
+            fill
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            className="object-contain"
+          />
         </div>
       </Reveal>
 
