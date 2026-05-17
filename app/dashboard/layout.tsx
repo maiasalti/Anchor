@@ -32,8 +32,8 @@ export default async function DashboardLayout({
       {/* Mobile header */}
       <div className="flex md:hidden items-center justify-between px-4 py-3 border-b border-sidebar-border fixed top-0 left-0 right-0 bg-background z-40">
         <Link href="/dashboard" className="flex items-center gap-2">
-          <img src="/logo.png" alt="Anchor" className="w-8 h-8 rounded-lg object-cover" />
-          <span className="font-semibold text-lg text-foreground">Anchor</span>
+          <img src="/logo.png" alt="WayFlame" className="w-8 h-8 rounded-lg object-cover" />
+          <span className="font-semibold text-lg text-foreground">WayFlame</span>
         </Link>
         <MobileNav profile={profile} userEmail={user.email ?? ""} />
       </div>
@@ -41,8 +41,8 @@ export default async function DashboardLayout({
       <aside className="hidden md:flex w-64 bg-sidebar border-r border-sidebar-border flex-col fixed h-full">
         <div className="px-6 py-5 border-b border-sidebar-border">
           <Link href="/dashboard" className="flex items-center gap-2">
-            <img src="/logo.png" alt="Anchor" className="w-8 h-8 rounded-lg object-cover" />
-            <span className="font-semibold text-lg text-foreground">Anchor</span>
+            <img src="/logo.png" alt="WayFlame" className="w-8 h-8 rounded-lg object-cover" />
+            <span className="font-semibold text-lg text-foreground">WayFlame</span>
           </Link>
         </div>
 
@@ -85,7 +85,7 @@ export default async function DashboardLayout({
         </UserProvider>
         <div className="mt-12 pt-6 border-t border-border">
           <p className="text-xs text-muted-foreground text-center max-w-2xl mx-auto">
-            Anchor provides informational support only and is not a substitute for professional medical advice. Always consult your healthcare team.{" "}
+            WayFlame provides informational support only and is not a substitute for professional medical advice. Always consult your healthcare team.{" "}
             <Link href="/disclaimer" className="underline hover:text-foreground">Full disclaimer</Link>
           </p>
         </div>

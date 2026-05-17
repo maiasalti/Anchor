@@ -15,11 +15,11 @@ type TodayItem = {
 };
 
 const categoryColor: Record<string, string> = {
-  insurance: "bg-blue-100 text-blue-700",
+  insurance: "bg-primary/15 text-primary",
   employment: "bg-purple-100 text-purple-700",
   financial: "bg-green-100 text-green-700",
   legal: "bg-yellow-100 text-yellow-700",
-  medical: "bg-red-100 text-red-700",
+  medical: "bg-red-100 text-destructive",
 };
 
 export function TodayItems({ items: initialItems }: { items: TodayItem[] }) {
@@ -67,7 +67,7 @@ export function TodayItems({ items: initialItems }: { items: TodayItem[] }) {
             <span className="text-sm font-medium flex-1">{item.title}</span>
             <div className="flex items-center gap-2">
               {item.category && (
-                <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${categoryColor[item.category] ?? "bg-gray-100 text-gray-600"}`}>
+                <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${categoryColor[item.category] ?? "bg-muted text-muted-foreground"}`}>
                   {item.category}
                 </span>
               )}

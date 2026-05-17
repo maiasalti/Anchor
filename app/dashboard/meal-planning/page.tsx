@@ -225,7 +225,7 @@ export default function MealPlanningPage() {
           <Card>
             <CardHeader>
               <CardTitle className="text-base flex items-center gap-2">
-                <Droplets className="w-4 h-4 text-blue-500" />
+                <Droplets className="w-4 h-4 text-primary" />
                 {plan.hydration_tips.title}
               </CardTitle>
             </CardHeader>

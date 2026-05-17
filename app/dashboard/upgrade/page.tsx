@@ -9,24 +9,24 @@ export default function UpgradePage() {
     <div className="flex flex-col items-center justify-center min-h-[60vh]">
       <div className="max-w-md w-full text-center">
         <div className="mb-6">
-          <div className="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4">
-            <CheckCircle className="w-7 h-7 text-blue-500" />
+          <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <CheckCircle className="w-7 h-7 text-primary" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">
+          <h1 className="text-2xl font-bold text-foreground mb-2">
             Your plan is ready
           </h1>
-          <p className="text-gray-500">
+          <p className="text-muted-foreground">
             Subscribe to unlock your personalized action checklist, report translator,
             journal, and deadline tracker.
           </p>
         </div>
 
-        <Card className="border-2 border-blue-600 shadow-lg mb-6">
+        <Card className="border-2 border-primary shadow-lg mb-6">
           <CardHeader className="text-center pb-2">
             <Badge className="w-fit mx-auto mb-2">Full access</Badge>
             <CardTitle className="text-4xl font-bold">
               $3
-              <span className="text-lg font-normal text-gray-500">/month</span>
+              <span className="text-lg font-normal text-muted-foreground">/month</span>
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
@@ -38,7 +38,7 @@ export default function UpgradePage() {
               "Deadline tracker with reminders",
             ].map((item) => (
               <div key={item} className="flex items-center gap-3">
-                <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
                 <span className="text-sm">{item}</span>
               </div>
             ))}
@@ -51,7 +51,7 @@ export default function UpgradePage() {
           </Button>
         </form>
         <Link href="/">
-          <Button variant="ghost" size="sm" className="text-gray-400">
+          <Button variant="ghost" size="sm" className="text-muted-foreground">
             Back to home
           </Button>
         </Link>

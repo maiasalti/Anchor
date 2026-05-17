@@ -19,7 +19,7 @@ const STATUS_OPTIONS = [
 ];
 
 const PHASE_COLORS: Record<string, string> = {
-  "Phase I": "bg-blue-100 text-blue-800",
+  "Phase I": "bg-primary/15 text-primary",
   "Phase II": "bg-purple-100 text-purple-800",
   "Phase III": "bg-green-100 text-green-800",
   "Phase IV": "bg-orange-100 text-orange-800",

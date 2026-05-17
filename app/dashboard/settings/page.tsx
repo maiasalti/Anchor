@@ -193,7 +193,7 @@ export default function SettingsPage() {
             <CreditCard className="w-5 h-5" />
             Subscription
           </CardTitle>
-          <CardDescription>Manage your Anchor subscription.</CardDescription>
+          <CardDescription>Manage your WayFlame subscription.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center justify-between">
@@ -348,7 +348,7 @@ export default function SettingsPage() {
                   checked={molecularMarkers.includes(marker)}
                   onCheckedChange={() => toggleMarker(marker)}
                 />
-                <label htmlFor={`marker-${marker}`} className="text-sm text-gray-700 cursor-pointer">
+                <label htmlFor={`marker-${marker}`} className="text-sm text-foreground cursor-pointer">
                   {marker}
                 </label>
               </div>
@@ -386,7 +386,7 @@ export default function SettingsPage() {
                   checked={metastaticSites.includes(site)}
                   onCheckedChange={() => toggleMetastaticSite(site)}
                 />
-                <label htmlFor={`site-${site}`} className="text-sm text-gray-700 cursor-pointer">
+                <label htmlFor={`site-${site}`} className="text-sm text-foreground cursor-pointer">
                   {site}
                 </label>
               </div>

@@ -113,6 +113,11 @@ export default function OnboardingPage() {
   async function handleSaveProfile() {
     setSaving(true);
     setError(null);
+    // Show the loading screen immediately — no "Saving..." beat on step 5.
+    setLoadingPlan(true);
+    setLoadingMessageIndex(0);
+    setStep(6);
+
     const supabase = createClient();
     const { data: { session } } = await supabase.auth.getSession();
     const user = session?.user;
@@ -143,9 +148,10 @@ export default function OnboardingPage() {
     if (error) {
       setError(error.message);
       setSaving(false);
+      setLoadingPlan(false);
+      setStep(5);
     } else {
       setSaving(false);
-      setStep(6);
       generatePriorityPlan();
     }
   }
@@ -169,14 +175,14 @@ export default function OnboardingPage() {
   const progress = ((step + 1) / STEPS.length) * 100;
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-background flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-lg">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <img src="/logo.png" alt="Anchor" className="w-8 h-8 rounded-lg object-cover" />
-            <span className="font-semibold text-lg">Anchor</span>
+            <img src="/logo.png" alt="WayFlame" className="w-8 h-8 rounded-lg object-cover" />
+            <span className="font-semibold text-lg">WayFlame</span>
           </div>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-muted-foreground">
             Step {step + 1} of {STEPS.length} — {STEPS[step]}
           </p>
           <Progress value={progress} className="mt-3" />
@@ -193,30 +199,36 @@ export default function OnboardingPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
+                <div role="radiogroup" aria-label="Who is this for?" className="grid grid-cols-2 gap-4">
                   <button
+                    type="button"
+                    role="radio"
+                    aria-checked={data.role === "patient"}
                     onClick={() => update("role", "patient")}
-                    className={`flex flex-col items-center gap-3 p-6 rounded-xl border-2 transition-all ${
+                    className={`flex flex-col items-center gap-3 p-6 rounded-xl border-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
                       data.role === "patient"
                         ? "border-primary bg-primary/5 scale-[1.02]"
                         : "border-border hover:border-primary/40 hover:bg-muted/50"
                     }`}
                   >
-                    <User className={`w-8 h-8 ${data.role === "patient" ? "text-primary" : "text-muted-foreground"}`} />
+                    <User aria-hidden="true" className={`w-8 h-8 ${data.role === "patient" ? "text-primary" : "text-muted-foreground"}`} />
                     <div className="text-center">
                       <p className={`font-medium ${data.role === "patient" ? "text-primary" : ""}`}>I&apos;m the patient</p>
                       <p className="text-xs text-muted-foreground mt-1">Setting this up for myself</p>
                     </div>
                   </button>
                   <button
+                    type="button"
+                    role="radio"
+                    aria-checked={data.role === "caregiver"}
                     onClick={() => update("role", "caregiver")}
-                    className={`flex flex-col items-center gap-3 p-6 rounded-xl border-2 transition-all ${
+                    className={`flex flex-col items-center gap-3 p-6 rounded-xl border-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
                       data.role === "caregiver"
                         ? "border-primary bg-primary/5 scale-[1.02]"
                         : "border-border hover:border-primary/40 hover:bg-muted/50"
                     }`}
                   >
-                    <Heart className={`w-8 h-8 ${data.role === "caregiver" ? "text-primary" : "text-muted-foreground"}`} />
+                    <Heart aria-hidden="true" className={`w-8 h-8 ${data.role === "caregiver" ? "text-primary" : "text-muted-foreground"}`} />
                     <div className="text-center">
                       <p className={`font-medium ${data.role === "caregiver" ? "text-primary" : ""}`}>I&apos;m a caregiver</p>
                       <p className="text-xs text-muted-foreground mt-1">Helping someone I care about</p>
@@ -462,7 +474,7 @@ export default function OnboardingPage() {
                         className={`flex-1 py-2 rounded-lg text-xs font-medium transition-all ${
                           initialMood === m.value
                             ? `${m.color} text-white scale-105`
-                            : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+                            : "bg-muted text-muted-foreground hover:bg-muted"
                         }`}
                       >
                         {m.label}
@@ -482,7 +494,7 @@ export default function OnboardingPage() {
                       />
                       <label
                         htmlFor={opt.id}
-                        className="text-sm text-gray-700 cursor-pointer"
+                        className="text-sm text-foreground cursor-pointer"
                       >
                         {opt.label}
                       </label>
@@ -504,7 +516,7 @@ export default function OnboardingPage() {
               </CardHeader>
               <CardContent className="space-y-3">
                 {error && (
-                  <div className="bg-red-50 border border-red-200 text-red-700 text-sm px-3 py-2 rounded-md">
+                  <div className="bg-destructive/10 border border-destructive/30 text-destructive text-sm px-3 py-2 rounded-md">
                     {error}
                   </div>
                 )}
@@ -525,7 +537,7 @@ export default function OnboardingPage() {
                   { label: "Insurance provider", value: data.insurance_provider || "—" },
                 ].map((row) => (
                   <div key={row.label} className="flex justify-between text-sm py-1 border-b last:border-0">
-                    <span className="text-gray-500">{row.label}</span>
+                    <span className="text-muted-foreground">{row.label}</span>
                     <span className="font-medium capitalize">{row.value.replace(/_/g, " ")}</span>
                   </div>
                 ))}
@@ -596,12 +608,26 @@ export default function OnboardingPage() {
                     Skip this step
                   </Button>
                 )}
-                <Button onClick={() => setStep((s) => s + 1)}>
+                <Button
+                  onClick={() => setStep((s) => s + 1)}
+                  disabled={
+                    step === 1 &&
+                    (!data.cancer_type ||
+                      (data.cancer_type === "other" && !data.cancer_type_other?.trim()))
+                  }
+                >
                   Continue
                 </Button>
               </div>
             ) : step === 5 ? (
-              <Button onClick={handleSaveProfile} disabled={saving}>
+              <Button
+                onClick={handleSaveProfile}
+                disabled={
+                  saving ||
+                  !data.cancer_type ||
+                  (data.cancer_type === "other" && !data.cancer_type_other?.trim())
+                }
+              >
                 {saving ? "Saving..." : `Build ${isCaregiver ? "their" : "my"} plan`}
               </Button>
             ) : (

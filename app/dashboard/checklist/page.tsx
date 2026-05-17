@@ -43,11 +43,11 @@ const priorityColor: Record<string, "destructive" | "default" | "secondary" | "o
 };
 
 const categoryColor: Record<string, string> = {
-  insurance: "bg-blue-100 text-blue-700",
+  insurance: "bg-primary/15 text-primary",
   employment: "bg-purple-100 text-purple-700",
   financial: "bg-green-100 text-green-700",
   legal: "bg-yellow-100 text-yellow-700",
-  medical: "bg-red-100 text-red-700",
+  medical: "bg-red-100 text-destructive",
 };
 
 const bucketLabels: Record<string, string> = {
@@ -262,7 +262,7 @@ export default function ChecklistPage() {
               </span>
             )}
             {item.category && (
-              <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${categoryColor[item.category] ?? "bg-gray-100 text-gray-600"}`}>
+              <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${categoryColor[item.category] ?? "bg-muted text-muted-foreground"}`}>
                 {item.category}
               </span>
             )}
@@ -331,7 +331,7 @@ export default function ChecklistPage() {
       </div>
 
       {genError && (
-        <div className="bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-lg mb-6">
+        <div className="bg-destructive/10 border border-destructive/30 text-destructive text-sm px-4 py-3 rounded-lg mb-6">
           {genError}
         </div>
       )}

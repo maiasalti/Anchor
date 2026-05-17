@@ -37,7 +37,7 @@ function getDaysUntil(date: string): number {
 }
 
 function UrgencyBadge({ days }: { days: number }) {
-  if (days < 0) return <Badge variant="outline" className="text-gray-400">Past due</Badge>;
+  if (days < 0) return <Badge variant="outline" className="text-muted-foreground">Past due</Badge>;
   if (days === 0) return <Badge variant="destructive">Today</Badge>;
   if (days <= 3) return <Badge variant="destructive">{days}d left</Badge>;
   if (days <= 7) return <Badge className="bg-orange-500 hover:bg-orange-600">{days}d left</Badge>;
@@ -60,7 +60,7 @@ function getCalendarDays(year: number, month: number) {
 function getCalendarDotColor(days: number): string {
   if (days < 0 || days <= 3) return "bg-red-500";
   if (days <= 7) return "bg-orange-500";
-  return "bg-gray-400";
+  return "bg-muted";
 }
 
 export default function DeadlinesPage() {
@@ -154,12 +154,12 @@ export default function DeadlinesPage() {
     return (
       <Card
         key={deadline.id}
-        className={`hover:shadow-sm transition-shadow ${days < 0 ? "border-red-200 bg-red-50/30" : days <= 3 ? "border-orange-200" : ""}`}
+        className={`hover:shadow-sm transition-shadow ${days < 0 ? "border-destructive/30 bg-destructive/10/30" : days <= 3 ? "border-orange-200" : ""}`}
       >
         <CardHeader className="pb-2 flex flex-row items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="text-center min-w-[40px]">
-              <div className="text-xs text-gray-400">
+              <div className="text-xs text-muted-foreground">
                 {new Date(deadline.date).toLocaleDateString("en-US", { month: "short", timeZone: "UTC" })}
               </div>
               <div className="text-lg font-bold leading-none">
@@ -169,10 +169,10 @@ export default function DeadlinesPage() {
             <div>
               <CardTitle className="text-sm font-medium">{deadline.title}</CardTitle>
               {deadline.description && (
-                <p className="text-xs text-gray-500 mt-0.5">{deadline.description}</p>
+                <p className="text-xs text-muted-foreground mt-0.5">{deadline.description}</p>
               )}
               {deadline.notify_email && (
-                <p className="text-xs text-blue-500 mt-0.5">Email reminder</p>
+                <p className="text-xs text-primary mt-0.5">Email reminder</p>
               )}
             </div>
           </div>
@@ -186,16 +186,16 @@ export default function DeadlinesPage() {
               title={deadline.notify_email ? "Disable email reminder" : "Enable email reminder"}
             >
               {deadline.notify_email ? (
-                <Bell className="w-4 h-4 text-blue-500" />
+                <Bell className="w-4 h-4 text-primary" />
               ) : (
-                <BellOff className="w-4 h-4 text-gray-300" />
+                <BellOff className="w-4 h-4 text-muted-foreground" />
               )}
             </Button>
             {!deadline.is_completed && (
               <Button
                 size="sm"
                 variant="ghost"
-                className="text-xs text-gray-400 h-7"
+                className="text-xs text-muted-foreground h-7"
                 onClick={() => toggleComplete(deadline.id, false)}
               >
                 Mark done
@@ -211,23 +211,23 @@ export default function DeadlinesPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Deadline Tracker</h1>
-          <p className="text-gray-500 mt-1">Critical dates you can&apos;t afford to miss.</p>
+          <h1 className="text-2xl font-bold text-foreground">Deadline Tracker</h1>
+          <p className="text-muted-foreground mt-1">Critical dates you can&apos;t afford to miss.</p>
         </div>
         <Button className="gap-2" onClick={() => setOpen(true)}>
           <Plus className="w-4 h-4" /> Add deadline
         </Button>
       </div>
 
-      <div className="bg-blue-50 border border-blue-200 rounded-lg px-4 py-3 mb-6 flex items-center gap-3">
-        <Bell className="w-4 h-4 text-blue-500 flex-shrink-0" />
-        <p className="text-sm text-blue-800">
+      <div className="bg-primary/10 border border-primary/30 rounded-lg px-4 py-3 mb-6 flex items-center gap-3">
+        <Bell className="w-4 h-4 text-primary flex-shrink-0" />
+        <p className="text-sm text-primary">
           Email reminders are sent 3 days and 1 day before each deadline.
         </p>
       </div>
 
       {overdue.length > 0 && (
-        <div className="bg-red-50 border border-red-200 rounded-lg px-4 py-3 mb-6 flex items-center gap-3">
+        <div className="bg-destructive/10 border border-destructive/30 rounded-lg px-4 py-3 mb-6 flex items-center gap-3">
           <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
           <p className="text-sm text-red-800">
             You have {overdue.length} overdue deadline{overdue.length !== 1 ? "s" : ""}. Take action as soon as possible.
@@ -241,8 +241,8 @@ export default function DeadlinesPage() {
             <div className="w-14 h-14 bg-orange-50 rounded-full flex items-center justify-center mb-4">
               <Calendar className="w-7 h-7 text-orange-400" />
             </div>
-            <h3 className="font-semibold text-gray-900 mb-2">No deadlines tracked yet</h3>
-            <p className="text-sm text-gray-500 max-w-xs mb-4">
+            <h3 className="font-semibold text-foreground mb-2">No deadlines tracked yet</h3>
+            <p className="text-sm text-muted-foreground max-w-xs mb-4">
               Add important dates like COBRA election windows, insurance appeal deadlines, and benefits enrollment periods.
             </p>
             <Button className="gap-2" onClick={() => setOpen(true)}>
@@ -261,7 +261,7 @@ export default function DeadlinesPage() {
             <div className="space-y-6">
               {upcoming.length > 0 && (
                 <div>
-                  <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
+                  <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">
                     Upcoming ({upcoming.length})
                   </h2>
                   <div className="space-y-2">
@@ -271,7 +271,7 @@ export default function DeadlinesPage() {
               )}
               {completed.length > 0 && (
                 <div>
-                  <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-3">
+                  <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">
                     Completed ({completed.length})
                   </h2>
                   <div className="space-y-2 opacity-60">
@@ -280,7 +280,7 @@ export default function DeadlinesPage() {
                         <CardHeader className="pb-2 flex flex-row items-center justify-between">
                           <div className="flex items-center gap-3">
                             <Calendar className="w-4 h-4 text-green-500" />
-                            <CardTitle className="text-sm font-medium line-through text-gray-400">
+                            <CardTitle className="text-sm font-medium line-through text-muted-foreground">
                               {deadline.title}
                             </CardTitle>
                           </div>
@@ -293,9 +293,9 @@ export default function DeadlinesPage() {
                               title={deadline.notify_email ? "Disable email reminder" : "Enable email reminder"}
                             >
                               {deadline.notify_email ? (
-                                <Bell className="w-4 h-4 text-blue-500" />
+                                <Bell className="w-4 h-4 text-primary" />
                               ) : (
-                                <BellOff className="w-4 h-4 text-gray-300" />
+                                <BellOff className="w-4 h-4 text-muted-foreground" />
                               )}
                             </Button>
                           </div>
@@ -315,7 +315,7 @@ export default function DeadlinesPage() {
                   <Button variant="ghost" size="sm" onClick={prevMonth}>
                     <ChevronLeft className="w-4 h-4" />
                   </Button>
-                  <h2 className="text-lg font-semibold text-gray-900">
+                  <h2 className="text-lg font-semibold text-foreground">
                     {monthName} {currentYear}
                   </h2>
                   <Button variant="ghost" size="sm" onClick={nextMonth}>
@@ -326,7 +326,7 @@ export default function DeadlinesPage() {
               <CardContent>
                 <div className="grid grid-cols-7 gap-0">
                   {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-                    <div key={day} className="text-center text-xs font-medium text-gray-500 py-2">
+                    <div key={day} className="text-center text-xs font-medium text-muted-foreground py-2">
                       {day}
                     </div>
                   ))}
@@ -345,8 +345,8 @@ export default function DeadlinesPage() {
                     return (
                       <div
                         key={`day-${day}`}
-                        className={`h-14 flex flex-col items-center justify-start pt-1 border border-gray-100 rounded cursor-pointer transition-colors ${
-                          isSelected ? "bg-blue-50 border-blue-300" : "hover:bg-gray-50"
+                        className={`h-14 flex flex-col items-center justify-start pt-1 border border-border rounded cursor-pointer transition-colors ${
+                          isSelected ? "bg-primary/10 border-primary" : "hover:bg-background"
                         } ${isToday ? "ring-1 ring-blue-400" : ""}`}
                         onClick={() => {
                           if (dayDeadlines.length > 0) {
@@ -354,7 +354,7 @@ export default function DeadlinesPage() {
                           }
                         }}
                       >
-                        <span className={`text-sm ${isToday ? "font-bold text-blue-600" : "text-gray-700"}`}>
+                        <span className={`text-sm ${isToday ? "font-bold text-primary" : "text-foreground"}`}>
                           {day}
                         </span>
                         {dayDeadlines.length > 0 && (
@@ -377,7 +377,7 @@ export default function DeadlinesPage() {
 
                 {selectedDate && selectedDeadlines.length > 0 && (
                   <div className="mt-6 space-y-2">
-                    <h3 className="text-sm font-semibold text-gray-500 mb-2">
+                    <h3 className="text-sm font-semibold text-muted-foreground mb-2">
                       Deadlines for {new Date(selectedDate + "T00:00:00").toLocaleDateString("en-US", {
                         month: "long",
                         day: "numeric",

@@ -42,25 +42,25 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-background px-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-2">
-            <img src="/logo.png" alt="Anchor" className="w-8 h-8 rounded-lg object-cover" />
-            <span className="font-semibold text-lg">Anchor</span>
+            <img src="/logo.png" alt="WayFlame" className="w-8 h-8 rounded-lg object-cover" />
+            <span className="font-semibold text-lg">WayFlame</span>
           </Link>
         </div>
         <Card>
           <CardHeader>
             <CardTitle>Create your account</CardTitle>
             <CardDescription>
-              Start navigating your diagnosis paperwork — free to try.
+              Start your 14-day trial. No commitment, cancel anytime.
             </CardDescription>
           </CardHeader>
           <form onSubmit={handleSignup}>
             <CardContent className="space-y-4">
               {error && (
-                <div className="bg-red-50 border border-red-200 text-red-700 text-sm px-3 py-2 rounded-md">
+                <div className="bg-destructive/10 border border-destructive/30 text-destructive text-sm px-3 py-2 rounded-md">
                   {error}
                 </div>
               )}
@@ -103,13 +103,13 @@ export default function SignupPage() {
               <Button type="submit" className="w-full" disabled={loading}>
                 {loading ? "Creating account..." : "Create account"}
               </Button>
-              <p className="text-sm text-gray-500 text-center">
+              <p className="text-sm text-muted-foreground text-center">
                 Already have an account?{" "}
-                <Link href="/login" className="text-blue-600 hover:underline">
+                <Link href="/login" className="text-primary hover:underline">
                   Sign in
                 </Link>
               </p>
-              <p className="text-xs text-gray-400 text-center">
+              <p className="text-xs text-muted-foreground text-center">
                 By signing up, you agree to our Terms of Service and Privacy Policy.
               </p>
             </CardFooter>

@@ -4,11 +4,11 @@ import { ArrowLeft } from "lucide-react";
 
 export default function TermsPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <nav className="border-b px-6 py-4 flex items-center justify-between max-w-4xl mx-auto">
         <Link href="/" className="flex items-center gap-2">
-          <img src="/logo.png" alt="Anchor" className="w-8 h-8 rounded-lg object-cover" />
-          <span className="font-semibold text-lg">Anchor</span>
+          <img src="/logo.png" alt="WayFlame" className="w-8 h-8 rounded-lg object-cover" />
+          <span className="font-semibold text-lg">WayFlame</span>
         </Link>
         <Link href="/login">
           <Button variant="ghost">Log in</Button>
@@ -16,30 +16,30 @@ export default function TermsPage() {
       </nav>
 
       <main className="max-w-4xl mx-auto px-6 py-16 prose prose-gray">
-        <Link href="/" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 no-underline mb-6">
+        <Link href="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground no-underline mb-6">
           <ArrowLeft className="w-4 h-4" />
           Back to home
         </Link>
         <h1>Terms of Service</h1>
-        <p className="text-sm text-gray-500">Last updated: 5 March 2025</p>
+        <p className="text-sm text-muted-foreground">Last updated: 5 March 2025</p>
 
         <h2>1. Acceptance of Terms</h2>
         <p>
-          By accessing or using Anchor (&quot;the Service&quot;), you agree to be bound by these
+          By accessing or using WayFlame (&quot;the Service&quot;), you agree to be bound by these
           Terms of Service. If you do not agree, you may not use the Service.
         </p>
 
         <h2>2. Description of Service</h2>
         <p>
-          Anchor is an informational support platform for cancer patients and caregivers. It
+          WayFlame is an informational support platform for cancer patients and caregivers. It
           provides tools for action planning, medical report translation, side effect tracking,
-          and related features. Anchor is <strong>not</strong> a medical provider and does not
+          and related features. WayFlame is <strong>not</strong> a medical provider and does not
           provide medical advice, diagnosis, or treatment.
         </p>
 
         <h2>3. Subscription & Billing</h2>
         <ul>
-          <li>Full access to Anchor costs <strong>$3 per month</strong>.</li>
+          <li>Full access to WayFlame costs <strong>$3 per month</strong>.</li>
           <li>Subscriptions are billed monthly via Stripe.</li>
           <li>You may cancel your subscription at any time from your Settings page. Cancellation takes effect at the end of your current billing period.</li>
           <li>No refunds are provided for partial billing periods.</li>
@@ -55,25 +55,25 @@ export default function TermsPage() {
 
         <h2>5. Intellectual Property</h2>
         <p>
-          All content, features, and functionality of the Service are owned by Anchor and are
+          All content, features, and functionality of the Service are owned by WayFlame and are
           protected by applicable intellectual property laws. Content generated for your personal
           use (e.g., checklists, translations) is yours to use freely.
         </p>
 
         <h2>6. Limitation of Liability</h2>
         <p>
-          To the maximum extent permitted by law, Anchor shall not be liable for any indirect,
+          To the maximum extent permitted by law, WayFlame shall not be liable for any indirect,
           incidental, special, consequential, or punitive damages arising from your use of the
-          Service. Anchor&apos;s total liability shall not exceed the amount you paid for the Service
+          Service. WayFlame&apos;s total liability shall not exceed the amount you paid for the Service
           in the 12 months preceding the claim.
         </p>
 
         <h2>7. Disclaimer</h2>
         <p>
-          The Service is provided &quot;as is&quot; without warranties of any kind. Anchor does
+          The Service is provided &quot;as is&quot; without warranties of any kind. WayFlame does
           not warrant that the Service will be uninterrupted, error-free, or that AI-generated
           content will be accurate or complete. See our{" "}
-          <Link href="/disclaimer" className="text-blue-600">Medical Disclaimer</Link> for
+          <Link href="/disclaimer" className="text-primary">Medical Disclaimer</Link> for
           important health-related limitations.
         </p>
 
@@ -100,7 +100,7 @@ export default function TermsPage() {
         <h2>11. Contact</h2>
         <p>
           For questions about these Terms, please contact us at{" "}
-          <a href="mailto:maia.salti@gmail.com" className="text-blue-600">maia.salti@gmail.com</a>.
+          <a href="mailto:hello@wayflame.health" className="text-primary">hello@wayflame.health</a>.
         </p>
       </main>
     </div>

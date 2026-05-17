@@ -156,7 +156,7 @@ export default async function DashboardPage() {
         </Link>
         <Card className="h-full">
           <CardContent className="py-4 flex items-center gap-3">
-            <div className="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+            <div className="w-10 h-10 bg-destructive/10 rounded-lg flex items-center justify-center flex-shrink-0">
               <Heart className="w-5 h-5 text-red-500" />
             </div>
             <div>
@@ -171,7 +171,7 @@ export default async function DashboardPage() {
 
       {/* Urgent alert */}
       {urgentActions > 0 && (
-        <div className="bg-red-50 border border-red-200 rounded-lg px-4 py-3 mb-6 flex items-center justify-between">
+        <div className="bg-destructive/10 border border-destructive/30 rounded-lg px-4 py-3 mb-6 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Badge variant="destructive">Urgent</Badge>
             <span className="text-sm text-red-800">

@@ -16,7 +16,8 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  if (hasAuthCookie && (pathname === "/login" || pathname === "/signup")) {
+  const authPages = ["/login", "/signup", "/forgot-password", "/reset-password"];
+  if (hasAuthCookie && authPages.includes(pathname)) {
     const url = request.nextUrl.clone();
     url.pathname = "/dashboard";
     return NextResponse.redirect(url);

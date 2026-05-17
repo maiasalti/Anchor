@@ -42,32 +42,32 @@ export default async function PublicUpdatePage({
   const authorName = profile?.name?.split(" ")[0] ?? "Someone";
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-background flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-xl">
         <div className="text-center mb-6">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <img src="/logo.png" alt="Anchor" className="w-8 h-8 rounded-lg object-cover" />
-            <span className="font-semibold text-lg">Anchor</span>
+            <img src="/logo.png" alt="WayFlame" className="w-8 h-8 rounded-lg object-cover" />
+            <span className="font-semibold text-lg">WayFlame</span>
           </div>
-          <p className="text-sm text-gray-500">Care update from {authorName}</p>
+          <p className="text-sm text-muted-foreground">Care update from {authorName}</p>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border p-8">
+        <div className="bg-background rounded-xl shadow-sm border p-8">
           <h1 className="text-2xl font-bold mb-2">{update.title}</h1>
-          <p className="text-sm text-gray-400 mb-6">
+          <p className="text-sm text-muted-foreground mb-6">
             {new Date(update.created_at).toLocaleDateString(undefined, {
               year: "numeric",
               month: "long",
               day: "numeric",
             })}
           </p>
-          <div className="prose prose-sm max-w-none text-gray-700 whitespace-pre-line">
+          <div className="prose prose-sm max-w-none text-foreground whitespace-pre-line">
             {update.content}
           </div>
         </div>
 
-        <p className="text-center text-xs text-gray-400 mt-6">
-          Shared via Anchor — a cancer patient admin hub
+        <p className="text-center text-xs text-muted-foreground mt-6">
+          Shared via WayFlame — a cancer patient admin hub
         </p>
       </div>
     </div>

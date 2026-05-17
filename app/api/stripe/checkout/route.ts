@@ -43,7 +43,8 @@ export async function POST() {
       },
     ],
     mode: "subscription",
-    success_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard?upgraded=true`,
+    subscription_data: { trial_period_days: 14 },
+    success_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard?trial_started=true`,
     cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/upgrade`,
     metadata: { supabase_user_id: user.id },
   });

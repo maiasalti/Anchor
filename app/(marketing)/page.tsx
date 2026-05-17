@@ -1,207 +1,237 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { CheckCircle, Calendar, Shield, ArrowRight, BookOpen, Pill, FileSearch, Heart } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { Reveal } from "@/components/marketing/reveal";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Nav */}
-      <nav className="border-b px-6 py-4 flex items-center justify-between max-w-6xl mx-auto">
-        <div className="flex items-center gap-2">
-          <img src="/logo.png" alt="Anchor" className="w-8 h-8 rounded-lg object-cover" />
-          <span className="font-semibold text-lg">Anchor</span>
-        </div>
-        <div className="flex items-center gap-3">
-          <Link href="/login">
-            <Button variant="ghost">Log in</Button>
+    <div className="relative overflow-x-hidden font-serif">
+      {/* Floating nav */}
+      <nav className="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-background/60 border-b border-border/40">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <Link href="/" className="text-xl tracking-tight font-light">
+            WayFlame
           </Link>
-          <Link href="/signup">
-            <Button>Get started</Button>
-          </Link>
+          <div className="flex items-center gap-2 text-lg">
+            <Link
+              href="/caregivers"
+              className="hidden sm:inline-flex px-4 py-2 text-muted-foreground hover:text-foreground transition"
+            >
+              For caregivers
+            </Link>
+            <Link
+              href="/login"
+              className="px-4 py-2 text-muted-foreground hover:text-foreground transition"
+            >
+              Log in
+            </Link>
+            <Link
+              href="/signup"
+              className="ml-2 px-5 py-2 rounded-full bg-primary text-primary-foreground hover:opacity-90 transition font-light"
+            >
+              Start trial
+            </Link>
+          </div>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 py-24 text-center">
-        <Badge variant="secondary" className="mb-6">
-          Built for cancer patients and caregivers
-        </Badge>
-        <h1 className="text-5xl font-bold tracking-tight text-gray-900 mb-6">
-          Focus on healing.
-          <br />
-          <span className="text-blue-600">We handle the paperwork.</span>
-        </h1>
-        <p className="text-xl text-gray-500 max-w-2xl mx-auto mb-10">
-          After a cancer diagnosis, everything feels overwhelming. Anchor
-          gives you a personalized action plan, translates confusing medical reports,
-          and keeps track of critical deadlines — so nothing falls through the cracks.
-        </p>
-        <div className="flex items-center justify-center gap-4">
-          <Link href="/signup">
-            <Button size="lg" className="gap-2">
-              Start for free <ArrowRight className="w-4 h-4" />
-            </Button>
-          </Link>
-          <Link href="#how-it-works">
-            <Button size="lg" variant="outline">
-              See how it works
-            </Button>
-          </Link>
+      {/* HERO — animates on mount */}
+      <Reveal
+        onMount
+        className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-24"
+        yOffset={30}
+        duration={1.3}
+        stagger={0.18}
+      >
+        <div className="max-w-5xl mx-auto text-center relative z-10">
+          <p
+            data-reveal
+            className="text-sm uppercase tracking-[0.32em] text-muted-foreground mb-12"
+          >
+            For cancer patients and the people who love them
+          </p>
+          <h1 className="tracking-tight leading-[0.95] font-light">
+            <span
+              data-reveal
+              className="block text-6xl md:text-8xl text-foreground"
+            >
+              Focus on healing.
+            </span>
+            <span
+              data-reveal
+              className="block text-6xl md:text-8xl text-primary mt-3"
+            >
+              WayFlame handles the rest.
+            </span>
+          </h1>
+          <p
+            data-reveal
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mt-12"
+          >
+            A private hub for tracking symptoms, journaling, drafting messages,
+            and managing the practical side of a cancer diagnosis.
+          </p>
         </div>
-      </section>
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-muted-foreground">
+          <span className="text-[10px] uppercase tracking-[0.4em]">scroll</span>
+          <div className="w-px h-14 bg-gradient-to-b from-muted-foreground/60 to-transparent" />
+        </div>
+      </Reveal>
 
-      {/* How it works */}
-      <section id="how-it-works" className="bg-gray-50 py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">How Anchor works</h2>
-            <p className="text-lg text-gray-500">
-              Three steps to get your administrative life under control.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
+      {/* POSITIONING */}
+      <Reveal className="min-h-screen flex flex-col items-center justify-center px-6 relative">
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <p
+            data-reveal
+            className="text-4xl md:text-7xl leading-[1.1] tracking-tight font-light text-foreground"
+          >
+            A cancer diagnosis is overwhelming.
+          </p>
+          <p
+            data-reveal
+            className="text-4xl md:text-7xl leading-[1.1] tracking-tight font-light text-primary mt-4"
+          >
+            WayFlame brings it into one place.
+          </p>
+        </div>
+      </Reveal>
+
+      {/* WHAT IT INCLUDES */}
+      <Reveal className="min-h-screen flex flex-col items-center justify-center px-6 relative">
+        <div className="max-w-3xl mx-auto relative z-10">
+          <p
+            data-reveal
+            className="text-sm uppercase tracking-[0.32em] text-muted-foreground mb-14 text-center"
+          >
+            What WayFlame includes
+          </p>
+          <ul className="text-3xl md:text-5xl leading-[1.3] tracking-tight space-y-5 font-light text-foreground">
+            <li data-reveal>
+              <span className="text-primary">Symptom</span> and side-effect
+              tracking.
+            </li>
+            <li data-reveal>
+              Private <span className="text-primary">journaling</span>.
+            </li>
+            <li data-reveal>
+              <span className="text-primary">Message drafting</span> for friends
+              and family.
+            </li>
+            <li data-reveal>
+              <span className="text-primary">Community</span> and support group
+              discovery.
+            </li>
+            <li data-reveal>
+              Appointment and <span className="text-primary">deadline</span>{" "}
+              management.
+            </li>
+          </ul>
+        </div>
+      </Reveal>
+
+      {/* HOW IT WORKS */}
+      <Reveal className="min-h-screen flex flex-col items-center justify-center px-6 relative">
+        <div className="max-w-5xl mx-auto relative z-10">
+          <p
+            data-reveal
+            className="text-sm uppercase tracking-[0.32em] text-muted-foreground mb-16 text-center"
+          >
+            How it works
+          </p>
+          <div className="grid md:grid-cols-3 gap-12 md:gap-16">
             {[
               {
-                step: "01",
-                title: "Tell us about your situation",
-                description:
-                  "Complete a 4-step intake form covering your diagnosis, employer, and insurance. Takes about 5 minutes.",
+                num: "01",
+                title: "Complete a brief intake",
+                body: "Share your diagnosis, situation, and the support you need. Takes about 5 minutes.",
               },
               {
-                step: "02",
-                title: "Get your personalized plan",
-                description:
-                  "Anchor analyzes your situation and generates a prioritized checklist of actions, deadlines, and benefits.",
+                num: "02",
+                title: "Receive your priority plan",
+                body: "WayFlame generates a personalized plan covering treatment milestones, paperwork, and support.",
               },
               {
-                step: "03",
-                title: "Take action with confidence",
-                description:
-                  "Work through your checklist, generate documents, and track deadlines — all in one organized hub.",
+                num: "03",
+                title: "Manage everything in one place",
+                body: "Track symptoms, journal privately, draft updates, find community — all from one private hub.",
               },
-            ].map((item) => (
-              <div key={item.step} className="text-center">
-                <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold mx-auto mb-4">
-                  {item.step}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-500">{item.description}</p>
+            ].map((step) => (
+              <div key={step.num} data-reveal className="text-center">
+                <p className="text-primary text-3xl mb-5 font-light tracking-tight">
+                  {step.num}
+                </p>
+                <h3 className="text-2xl md:text-3xl mb-4 tracking-tight font-light text-foreground">
+                  {step.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed text-xl">
+                  {step.body}
+                </p>
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      {/* Features */}
-      <section className="py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Everything in one place</h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              {
-                icon: CheckCircle,
-                title: "Prioritized Action Checklist",
-                description:
-                  "Know exactly what to do and when. Urgent tasks and critical deadlines are surfaced immediately so nothing falls through the cracks.",
-              },
-              {
-                icon: BookOpen,
-                title: "Journal & Side Effect Tracking",
-                description:
-                  "Track your emotional journey and monitor side effects over time. AI-powered insights help you communicate better with your care team.",
-              },
-              {
-                icon: FileSearch,
-                title: "Report Translator",
-                description:
-                  "Paste any medical report or lab result and get a clear, empathetic explanation in plain language — with questions to ask your doctor.",
-              },
-              {
-                icon: Pill,
-                title: "Medication & Meal Planning",
-                description:
-                  "Manage your medications, track interactions, and get personalized meal plans tailored to your treatment and side effects.",
-              },
-            ].map((feature) => (
-              <Card key={feature.title} className="border-0 shadow-sm">
-                <CardHeader className="flex flex-row items-start gap-4 pb-2">
-                  <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <feature.icon className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <CardTitle className="text-lg">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-500">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+      {/* PRICING */}
+      <Reveal className="min-h-screen flex flex-col items-center justify-center px-6 relative">
+        <div className="max-w-2xl mx-auto text-center relative z-10">
+          <p
+            data-reveal
+            className="text-sm uppercase tracking-[0.32em] text-muted-foreground mb-12"
+          >
+            Pricing
+          </p>
+          <p
+            data-reveal
+            className="text-6xl md:text-8xl tracking-tight leading-none text-primary font-light"
+          >
+            $3 per month.
+          </p>
+          <p
+            data-reveal
+            className="text-2xl md:text-3xl text-muted-foreground mt-6"
+          >
+            14-day free trial. Cancel anytime.
+          </p>
+          <div data-reveal>
+            <Link
+              href="/signup"
+              className="inline-flex items-center gap-2 mt-14 px-8 py-4 rounded-full bg-primary text-primary-foreground hover:opacity-90 transition font-light text-base group"
+            >
+              Start your 14-day trial
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </Link>
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      {/* Pricing */}
-      <section className="bg-gray-50 py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Simple, transparent pricing</h2>
-            <p className="text-lg text-gray-500">No hidden fees. Cancel anytime.</p>
+      {/* FOOTER */}
+      <footer className="relative z-30 py-12 px-6 border-t border-border/40 bg-background/85 backdrop-blur">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-sm">
+          <Link href="/" className="text-base font-light">
+            WayFlame
+          </Link>
+          <div className="flex items-center gap-6 text-muted-foreground">
+            <Link
+              href="/caregivers"
+              className="hover:text-foreground transition"
+            >
+              For caregivers
+            </Link>
+            <Link href="/terms" className="hover:text-foreground transition">
+              Terms
+            </Link>
+            <Link href="/privacy" className="hover:text-foreground transition">
+              Privacy
+            </Link>
+            <Link
+              href="/disclaimer"
+              className="hover:text-foreground transition"
+            >
+              Disclaimer
+            </Link>
           </div>
-          <div className="max-w-sm mx-auto">
-            <Card className="border-2 border-blue-600 shadow-lg">
-              <CardHeader className="text-center pb-2">
-                <Badge className="w-fit mx-auto mb-2">Full access</Badge>
-                <CardTitle className="text-4xl font-bold">
-                  $3
-                  <span className="text-lg font-normal text-gray-500">/month</span>
-                </CardTitle>
-                <p className="text-gray-500 text-sm">Everything you need to navigate cancer's paperwork</p>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                {[
-                  "Personalized action checklist",
-                  "Report translator (plain-English explanations)",
-                  "Journal & side effect tracking",
-                  "Medication & meal planning",
-                  "Deadline tracker with reminders",
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                    <span className="text-sm">{item}</span>
-                  </div>
-                ))}
-                <div className="pt-4">
-                  <Link href="/signup" className="w-full block">
-                    <Button className="w-full" size="lg">
-                      Get started
-                    </Button>
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t py-12">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <Shield className="w-4 h-4 text-gray-400" />
-            <span className="text-sm text-gray-500">
-              Your data is private and never sold.
-            </span>
-          </div>
-          <div className="flex items-center gap-4">
-            <Link href="/terms" className="text-sm text-gray-400 hover:text-gray-600">Terms of Service</Link>
-            <Link href="/privacy" className="text-sm text-gray-400 hover:text-gray-600">Privacy Policy</Link>
-            <Link href="/disclaimer" className="text-sm text-gray-400 hover:text-gray-600">Medical Disclaimer</Link>
-          </div>
-          <p className="text-sm text-gray-400">
-            &copy; {new Date().getFullYear()} Anchor. All rights reserved.
+          <p className="text-muted-foreground text-xs">
+            © {new Date().getFullYear()} WayFlame
           </p>
         </div>
       </footer>

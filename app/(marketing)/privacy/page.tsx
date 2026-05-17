@@ -4,11 +4,11 @@ import { ArrowLeft } from "lucide-react";
 
 export default function PrivacyPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <nav className="border-b px-6 py-4 flex items-center justify-between max-w-4xl mx-auto">
         <Link href="/" className="flex items-center gap-2">
-          <img src="/logo.png" alt="Anchor" className="w-8 h-8 rounded-lg object-cover" />
-          <span className="font-semibold text-lg">Anchor</span>
+          <img src="/logo.png" alt="WayFlame" className="w-8 h-8 rounded-lg object-cover" />
+          <span className="font-semibold text-lg">WayFlame</span>
         </Link>
         <Link href="/login">
           <Button variant="ghost">Log in</Button>
@@ -16,15 +16,15 @@ export default function PrivacyPage() {
       </nav>
 
       <main className="max-w-4xl mx-auto px-6 py-16 prose prose-gray">
-        <Link href="/" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 no-underline mb-6">
+        <Link href="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground no-underline mb-6">
           <ArrowLeft className="w-4 h-4" />
           Back to home
         </Link>
         <h1>Privacy Policy</h1>
-        <p className="text-sm text-gray-500">Last updated: 5 March 2025</p>
+        <p className="text-sm text-muted-foreground">Last updated: 5 March 2025</p>
 
         <p>
-          Anchor (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is committed to protecting your
+          WayFlame (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is committed to protecting your
           personal data in accordance with the Personal Data Protection Act 2012 (PDPA) of
           Singapore and applicable data protection standards.
         </p>
@@ -54,11 +54,11 @@ export default function PrivacyPage() {
         </p>
 
         <h2>4. Third-Party Services</h2>
-        <p>We use the following third-party services to operate Anchor:</p>
+        <p>We use the following third-party services to operate WayFlame:</p>
         <ul>
           <li><strong>Supabase</strong> — Database and authentication. Your data is stored securely with row-level security.</li>
           <li><strong>Stripe</strong> — Payment processing. Subject to{" "}
-            <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600">Stripe&apos;s Privacy Policy</a>.
+            <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer" className="text-primary">Stripe&apos;s Privacy Policy</a>.
           </li>
           <li><strong>Anthropic (Claude)</strong> — AI processing. Your prompts are sent to generate personalized content. Anthropic does not use your data to train models.</li>
         </ul>
@@ -80,7 +80,7 @@ export default function PrivacyPage() {
         </ul>
         <p>
           To exercise any of these rights, contact us at{" "}
-          <a href="mailto:maia.salti@gmail.com" className="text-blue-600">maia.salti@gmail.com</a>.
+          <a href="mailto:hello@wayflame.health" className="text-primary">hello@wayflame.health</a>.
         </p>
 
         <h2>7. Data Security</h2>
@@ -111,7 +111,7 @@ export default function PrivacyPage() {
         <h2>11. Contact</h2>
         <p>
           For privacy-related inquiries, contact our Data Protection Officer at{" "}
-          <a href="mailto:maia.salti@gmail.com" className="text-blue-600">maia.salti@gmail.com</a>.
+          <a href="mailto:hello@wayflame.health" className="text-primary">hello@wayflame.health</a>.
         </p>
       </main>
     </div>

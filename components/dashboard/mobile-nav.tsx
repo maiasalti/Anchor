@@ -34,8 +34,8 @@ export function MobileNav({ profile, userEmail }: MobileNavProps) {
         <SheetTitle className="sr-only">Navigation</SheetTitle>
         <div className="px-6 py-5 border-b border-sidebar-border">
           <Link href="/dashboard" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-            <img src="/logo.png" alt="Anchor" className="w-8 h-8 rounded-lg object-cover" />
-            <span className="font-semibold text-lg text-foreground">Anchor</span>
+            <img src="/logo.png" alt="WayFlame" className="w-8 h-8 rounded-lg object-cover" />
+            <span className="font-semibold text-lg text-foreground">WayFlame</span>
           </Link>
         </div>
 
