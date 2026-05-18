@@ -9,7 +9,8 @@ export default function LandingPage() {
       {/* Floating nav */}
       <nav className="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-background/60 border-b border-border/40">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="text-xl tracking-tight font-light">
+          <Link href="/" className="flex items-center gap-2 text-xl tracking-tight font-light">
+            <img src="/logo.png" alt="" className="w-8 h-8 rounded-lg object-cover" />
             WayFlame
           </Link>
           <div className="flex items-center gap-2 text-lg">
@@ -44,7 +45,7 @@ export default function LandingPage() {
         stagger={0.18}
       >
         <Image
-          src="/hero-bg.png"
+          src="/hero-bg-v2.png"
           alt=""
           fill
           priority
@@ -87,8 +88,8 @@ export default function LandingPage() {
       </Reveal>
 
       {/* POSITIONING */}
-      <Reveal className="flex flex-col items-center px-6 pt-12 md:pt-16 pb-0 relative">
-        <div className="max-w-4xl mx-auto text-center relative z-10">
+      <Reveal className="flex flex-col items-center pt-12 md:pt-16 pb-0 relative">
+        <div className="max-w-4xl mx-auto text-center px-6 relative z-10">
           <p
             data-reveal
             className="text-4xl md:text-7xl leading-[1.1] tracking-tight font-light text-foreground"
@@ -104,57 +105,71 @@ export default function LandingPage() {
         </div>
         <div
           data-reveal
-          className="relative w-full max-w-5xl aspect-[16/9] mt-12 md:mt-16 pointer-events-none select-none"
+          className="relative w-full aspect-[5/2] mt-2 md:mt-4 pointer-events-none select-none"
         >
           <Image
-            src="/positioning-illustration.png"
+            src="/positioning-illustration-v3.png"
             alt=""
             fill
-            sizes="(max-width: 1024px) 100vw, 1024px"
-            className="object-contain"
+            sizes="100vw"
+            className="object-cover"
           />
         </div>
       </Reveal>
 
       {/* WHAT IT INCLUDES */}
-      <Reveal className="min-h-screen flex flex-col items-center justify-center px-6 relative">
-        <div className="max-w-3xl mx-auto relative z-10">
-          <p
+      <Reveal className="min-h-screen flex items-center px-6 md:px-12 relative">
+        <div className="w-full max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center relative z-10">
+          <div className="text-left">
+            <p
+              data-reveal
+              className="text-sm uppercase tracking-[0.32em] text-muted-foreground mb-10"
+            >
+              What WayFlame includes
+            </p>
+            <ul className="text-3xl md:text-5xl leading-[1.3] tracking-tight space-y-5 font-light text-foreground">
+              <li data-reveal>
+                <span className="text-primary">Symptom</span> and side-effect
+                tracking.
+              </li>
+              <li data-reveal>
+                Private <span className="text-primary">journaling</span>.
+              </li>
+              <li data-reveal>
+                <span className="text-primary">Message drafting</span> for friends
+                and family.
+              </li>
+              <li data-reveal>
+                <span className="text-primary">Community</span> and support group
+                discovery.
+              </li>
+              <li data-reveal>
+                Appointment and <span className="text-primary">deadline</span>{" "}
+                management.
+              </li>
+            </ul>
+          </div>
+          <div
             data-reveal
-            className="text-sm uppercase tracking-[0.32em] text-muted-foreground mb-14 text-center"
+            className="relative w-full aspect-[4/3] pointer-events-none select-none"
           >
-            What WayFlame includes
-          </p>
-          <ul className="text-3xl md:text-5xl leading-[1.3] tracking-tight space-y-5 font-light text-foreground">
-            <li data-reveal>
-              <span className="text-primary">Symptom</span> and side-effect
-              tracking.
-            </li>
-            <li data-reveal>
-              Private <span className="text-primary">journaling</span>.
-            </li>
-            <li data-reveal>
-              <span className="text-primary">Message drafting</span> for friends
-              and family.
-            </li>
-            <li data-reveal>
-              <span className="text-primary">Community</span> and support group
-              discovery.
-            </li>
-            <li data-reveal>
-              Appointment and <span className="text-primary">deadline</span>{" "}
-              management.
-            </li>
-          </ul>
+            <Image
+              src="/includes-illustration-v2.png"
+              alt=""
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-contain"
+            />
+          </div>
         </div>
       </Reveal>
 
       {/* HOW IT WORKS */}
-      <Reveal className="min-h-screen flex flex-col items-center justify-center px-6 relative">
+      <Reveal className="py-20 md:py-28 px-6 relative">
         <div className="max-w-5xl mx-auto relative z-10">
           <p
             data-reveal
-            className="text-sm uppercase tracking-[0.32em] text-muted-foreground mb-16 text-center"
+            className="text-lg md:text-xl uppercase tracking-[0.32em] text-muted-foreground mb-8 md:mb-12 text-center"
           >
             How it works
           </p>
@@ -164,19 +179,33 @@ export default function LandingPage() {
                 num: "01",
                 title: "Complete a brief intake",
                 body: "Share your diagnosis, situation, and the support you need. Takes about 5 minutes.",
+                image: "/step-01-v2.png",
               },
               {
                 num: "02",
                 title: "Receive your priority plan",
                 body: "WayFlame generates a personalized plan covering treatment milestones, paperwork, and support.",
+                image: "/step-02-v2.png",
               },
               {
                 num: "03",
                 title: "Manage everything in one place",
                 body: "Track symptoms, journal privately, draft updates, find community — all from one private hub.",
+                image: "/step-03-v2.png",
               },
             ].map((step) => (
               <div key={step.num} data-reveal className="text-center">
+                <div className="relative w-full aspect-square mb-8 pointer-events-none select-none">
+                  {step.image && (
+                    <Image
+                      src={step.image}
+                      alt=""
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-contain"
+                    />
+                  )}
+                </div>
                 <p className="text-primary text-3xl mb-5 font-light tracking-tight">
                   {step.num}
                 </p>
