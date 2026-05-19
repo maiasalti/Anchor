@@ -23,16 +23,20 @@ export async function POST() {
 
   const cancerContext = getCancerContext(profile.cancer_type, profileContextOptions(profile));
 
-  const prompt = `You are helping a newly diagnosed cancer patient identify their most urgent priorities for THIS WEEK.
+  const concerns = (profile.practical_concerns ?? []) as string[];
+
+  const prompt = `You are helping a cancer patient identify their most urgent priorities for THIS WEEK.
 
 Patient profile:
 - Cancer type: ${profile.cancer_type ?? "unknown"}
-- Stage: ${profile.stage ?? "unknown"}
-- Treatment status: ${profile.treatment_status ?? "unknown"}
+- Primary tumor site: ${profile.primary_tumor_site ?? "unknown"}
+- Tumor size: ${profile.tumor_size_cm ?? "unknown"}
+- Surgery status: ${profile.had_surgery ?? "unknown"}
+- Treatment phase: ${profile.treatment_status ?? "unknown"}
 - Employer size: ${profile.employer_size ?? "unknown"}
 - Insurance type: ${profile.insurance_type ?? "unknown"}
-${cancerContext ? `\nCancer-specific context:\n${cancerContext}\n` : ""}
-Prioritize based on the specific urgency of this cancer type.
+${concerns.length > 0 ? `- Patient-flagged concerns: ${concerns.join(", ")}\n` : ""}${profile.onboarding_notes ? `- Patient's own notes: "${profile.onboarding_notes}"\n` : ""}${cancerContext ? `\nCancer-specific context:\n${cancerContext}\n` : ""}
+Weight items by the patient's flagged concerns first. Prioritize based on the specific urgency of this cancer type and the patient's current treatment phase.
 
 Generate a JSON array of 5-7 high-priority action items they should focus on this week. Each item should have:
 - title: string (clear, actionable task)
